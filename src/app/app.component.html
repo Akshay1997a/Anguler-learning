@@ -1,19 +1,26 @@
-<div>
-  <h1>Shoping LIst</h1>
-  Name: <input type="text"/><br>
-  Qty: <input type="text"/><br>
-  <button ></button>
-
+<div class="main">
   <div>
+    <h1>Shoping List</h1>
+    Food Name: <input [(ngModel)]="food" type="text" /><br>
+    Qty: <input [(ngModel)]="qty" name="qty" type="text" /><br>
+    <button (click)="addItem(food, qty)" type="button" class="btn btn-primary">Add item</button>
+  </div>
+
+  <div *ngIf="isNotEmpty; else condition1">
     <table border="1px" width="100%">
       <tr>
         <th>Food</th>
         <th>Qty</th>
       </tr>
       <tr *ngFor="let x of obj">
-        <td>{{x.food}}</td>
-        <td>{{x.qty}}</td>
+        <td width="50%">{{x.food}}</td>
+        <td width="50%">{{x.qty}}</td>
       </tr>
     </table>
+  </div>
+  <div>
+    <ng-template #condition1>
+      <h1>Shoping List is empty</h1>
+    </ng-template>
   </div>
 </div>
